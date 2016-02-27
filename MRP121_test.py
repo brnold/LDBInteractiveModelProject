@@ -35,10 +35,30 @@
 
 import serbus, time
 
-CHIP_ADDR           0x5A                      #Adafruit break out address.
-LITTLE_ENDIAN        0                        # Integer formating.
-BIG_ENDIAN           1                           # What I'm used to BH.
+CHIP_ADDR      =      0x5A                      #Adafruit break out address.
+LITTLE_ENDIAN    =    0                        # Integer formating.
+BIG_ENDIAN      =     1                           # What I'm used to BH.
 
+
+
+def I2CWriteBytes(data):
+	bus.write( int(CHIP_ADDR), data) #yep, that's it. CHIP_ADDR is an int, data should be a list though
+
+# I2CRead2Bytes
+# Use bus.readTransaction instead
+#---------------------
+# readTransaction(slave_addr, tx_byte, n_bytes)
+# Parameters:	
+# slave_addr (int) – The address of the slave to read from
+# tx_byte (int) – The byte to write before reading
+# n_bytes (int) – The number of bytes to read
+# Returns:	
+# A list of ints of the bytes read
+
+# Writes tx_byte then immediately reads n_bytes bytes from the I2C slave device with the given address and returns them as a list. This is useful for things like reading register values from memory mapped devices.
+
+##############Program Starts Below#######
+#Maybe I should make a main
 bus = serbus.I2CDev(1)
 bus.open()
 
