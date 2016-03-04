@@ -101,13 +101,13 @@ try:
 	bus = serbus.I2CDev(1)
 	bus.open()
 
-	print "IIC pus open"
+	print "IIC bus open"
 
-	I2CWriteBytes( listHextToInt(ucSoftReset))
+	I2CWriteBytes(ucSoftReset)
 	time.sleep(0.01) # the time.sleep taked floats and evaluvates in seconds
-	I2CWriteBytes( listHextToInt(ucThresh0_11))
-	I2CWriteBytes( listHextToInt(ucBaseLine))
-	I2CWriteBytes( listHextToInt(ucDbCfg1_2))
+	I2CWriteBytes( ucThresh0_11)
+	I2CWriteBytes(ucBaseLine)
+	I2CWriteBytes(ucDbCfg1_2)
 
 
 	while True:
