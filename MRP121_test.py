@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 # /***************************************************************************************************************** 
 # //  ECE 491 Senior Design
 # //  Winter 2016
@@ -79,7 +80,7 @@ def  listHextToInt(theList):
 	return intList                                      
 
 def I2CWriteBytes(data):
-	bus.write( int(CHIP_ADDR), data) #yep, that's it. CHIP_ADDR is an int, data should be a list though
+	bus.write( CHIP_ADDR, data) #yep, that's it. CHIP_ADDR is an int, data should be a list though
 
 # I2CRead2Bytes
 # Use bus.readTransaction instead
@@ -114,6 +115,9 @@ try:
 		print
 		print "Oh look, I'm doing something!"
 		time.sleep(1)
+
+except IOError:
+      print "Really, an IO error"
 
 except  KeyboardInterrupt:
 	bus.close()
