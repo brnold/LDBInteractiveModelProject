@@ -130,10 +130,10 @@ void loop()
       //                                                                              b.henson  2016-02-14
       //***********************************************************************************************************
       ulTime = micros();                                  // Get the current time.
-      I2Cread2Bytes(&uiTouchStatus, 1, 0);                // Electrode touch status.
+      I2CreadBytes(&uiTouchStatus, 1, 0);                // Electrode touch status.
 //      sprintf (scString, "TS:\t%4.4X\t", uiIntRegArray[0]);
 //      Serial.print(scString);
-      for (uiIdx=0;uiIdx<uiNumbElectEnab;uiIdx++)         // Read all of the electrode data.
+      for (uiIdx=0;uiIdx<uiNumbElectEnab;uiIdx++)         // Read all of the electrode data. (for excel purposes)
       {
         I2Cread2Bytes(&uiIntRegArray[uiIdx], 1, (2*uiIdx+0x04));
         I2Cread1Byte(&ucRegData[uiIdx], 1, uiIdx+0x1e);

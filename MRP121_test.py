@@ -1,4 +1,5 @@
-# -*- coding: utf-8 -*-
+#-*- coding: utf-8 -*-
+#THIS IS THR PYHON CODE
 # /***************************************************************************************************************** 
 # //  ECE 491 Senior Design
 # //  Winter 2016
@@ -32,7 +33,7 @@
 #
 # //*****************************************************************************************************************
 
-import serbus, time
+import serbus, time, pyglet, os
 
 CHIP_ADDR      =      0x5A                      #Adafruit break out address.
 LITTLE_ENDIAN    =    0                        # Integer formating.
@@ -74,6 +75,7 @@ ucThresh0_11  = [0x41,0x0c,0x06,0x0c,0x06,0x0c,0x06,0x0c,0x06,0x0c,0x06,0x0c,0x0
                                                       0x38,0x06,0x0c,0x06,0x0c,0x06,0x0c,0x06,0x0c,0x06,0x0c,0x06]
 
 #This function takes a list of 
+#Not used
 def  listHextToInt(theList):
 	for hexNum in theList:
 		intList.append( int(hexNum))
@@ -81,6 +83,7 @@ def  listHextToInt(theList):
 
 def I2CWriteBytes(data):
 	bus.write( CHIP_ADDR, data) #yep, that's it. CHIP_ADDR is an int, data should be a list though
+
 
 # I2CRead2Bytes
 # Use bus.readTransaction instead
@@ -98,9 +101,11 @@ def I2CWriteBytes(data):
 ##############Program Starts Below##################################
 #Maybe I should make a main
 
+touchStatus = [0x00, 0x00]
+
 try:
 	bus = serbus.I2CDev(1)
-	bus.open()
+        bus.open()
 
 	print "IIC bus open"
 
@@ -109,15 +114,42 @@ try:
 	I2CWriteBytes( ucThresh0_11)
 	I2CWriteBytes(ucBaseLine)
 	I2CWriteBytes(ucDbCfg1_2)
+        #player = pyglet.media.Player()
+	#source = pyglet.media.load('abcd.mp3', streaming=False)
+	#player.queue(source)
 
 
-	while True:
-		print
-		print "Oh look, I'm doing something!"
-		time.sleep(1)
+	while True: # never ending loop
+		#print
+		#print "Oh look, I'm doing something!"
+             #read touch status
+                touchStatus = bus.readTransaction(CHIP_ADDR, 0, 2)
+                print touchStatus[0] + touchStatus[1]
+
+                if touchStatus[0] == 1:
+                    
+		    #if 1 == 1:
+		 	#source = pyglet.media.load('abcd.mp3', streaming=False)
+			#player.queue(source)
+			#player.play()
+		    os.system('mpg321 ./run2/H.mp3')
+			#print "I have done the 1==1 thingy"
+		    #else: 
+                    	#print "I have been touched, and the sound is done playing"
+                if touchStatus[0] == 2:
+			os.system('mpg321 ./run2/G.mp3')
+		if touchStatus[0] == 4:
+			os.system('mpg321 ./run2/I.mp3')
+		else:
+                    print "No touch"
+          
+
+
+
+		time.sleep(0.5)
 
 except IOError:
-      print "Really, an IO error"
+      print "Really, an IO error" 
 
 except  KeyboardInterrupt:
 	bus.close()
