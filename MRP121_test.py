@@ -153,3 +153,7 @@ except IOError:
 
 except  KeyboardInterrupt:
 	bus.close()
+
+
+#sorted(['A', 2, 4, 'B'])
+#myList.index('A') <- returns index of element
