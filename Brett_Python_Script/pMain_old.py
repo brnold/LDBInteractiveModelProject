@@ -54,10 +54,15 @@ try:												# Required durring development.
 # IR Sensor status check goes here in the next revision.
 # This section gets replaced by audio narrative processing in the next revision.
 #
+		print "--------------OLD WAY--------------------"
 		TouchStatus = TouchObjs.GetStatus()			# Call the get status function.
 		for idx in range (0, 32):
 			if TouchStatus[idx] > 0:
 				print TouchStatus[idx]
+		print "-------------NOW MY WONDERFUL NEW FUNCITON-----------------"
+		electroidList = TouchObjs.getTouchedElectrodes()
+		for idx in range (0, len(electroidList)):
+			print electroidList[idx]
 #************************************************************************************************************
 		time.sleep(0.5)
 except KeyboardInterrupt:							# Required during development.

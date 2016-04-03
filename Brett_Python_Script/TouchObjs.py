@@ -63,4 +63,35 @@ def GetStatus():										# Update touch status from all ICs.
 		StatusOfTOs[idx] = TOs[idx].displayStatus()			#This returns the Binary register value from the Chip.
 #	print StatusOfTOs									# Feedback during development.
 	return StatusOfTOs
+
+def getTouchedElectrodes():
+#Written by Benjamin on 3/3/2016
+#Takes the value of the electroid status and converts it to a value
+#NOT ROBUST YET, this will cause issues for anything on Subnet 0
+	electroidStatus = ""
+	electroidList = []
+	EleBit  = 1
+	for idx in range (0,32):							# idx will range from 0 to 31
+		binStatus = TOs[idx].displayStatus()			#This returns the Binary register value from the Chip.
+		for siX in range (0, 12):			# Build up touch status bit status
+			if binStatus == None: # if the module is not enabled, break
+				break
+			c = binStatus & EleBit 
+			if (c) >0:
+			
+				#electroidName = '%d%d%d' % ((idx/4),(idx%4), siX)
+				
+				#electroidName = hex(((idx/4)+255) + ((idx%4)+16) + siX)\
+				electroidName = hex(((idx/4)*256) +((idx%4)*15)+siX)
+				electroidList.extend([electroidName])  #add electroid number
+		
+			EleBit <<=1
+	return electroidList	
 # End of TouchObjs.py
+
+
+
+
+
+
+
