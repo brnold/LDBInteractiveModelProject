@@ -18,10 +18,6 @@
 #************************************************************************************************************ 
 #  Revision      
 #  0	 Supporting script Global Chip configuration settings.					Bret		2016-03-20
-#  1	 Add setting specific to sections of the floor panels on the                   
-#        on the back side of the model.											Bret		2016-04-10
-#  2	 Add setting specific to sections of the floor panels on the                   
-#        on the back side of the model.										Bret		2016-04-12
 #                     
 #  x	 Edits.																	TBD			2016-0x-xx
 #
@@ -42,26 +38,8 @@ Global2_1	=	[0x5b,	0x00,	0x07,	0x93,	0x89]
 Global3_1	=	[0x5b,	0x00,	0x07,	0x93,	0x89] 
 GlobalSn1	=	[Global0_1, Global1_1, Global2_1, Global3_1]
 
-#Global0_2	=	[0x5b,	0x00,	0x0a,	0x93,	0x8c]		# ELE0-ELE11 enabled SparkFun 7-2
-#Global0_2	=	[0x5b,	0x00,	0x0a,	0x93,	0x8c]		# ELE0-ELE11 enabled SparkFun 7-4
-#Global0_2	=	[0x5b,	0x00,	0x0a,	0x93,	0x86]		# ELE0-ELE11 enabled SparkFun 6-1
-#Global0_2	=	[0x5b,	0x00,	0x0a,	0x93,	0x8c]		# ELE0-ELE11 enabled SparkFun 7-3
-#Global0_2	=	[0x5b,	0x00,	0x0a,	0x93,	0x8c]		# ELE0-ELE11 enabled SparkFun 7-1
-#Global0_2	=	[0x5b,	0x00,	0x0a,	0x93,	0x8c]		# ELE0-ELE11 enabled SparkFun 6_3
-#Global0_2	=	[0x5b,	0x00,	0x0a,	0x93,	0x8c]		# ELE0-ELE11 enabled SparkFun 3_16
-Global0_2	=	[0x5b,	0x00,	0x0a,	0x93,	0x89]		# ELE0-ELE11 enabled SparkFun 18_19
-#Global0_2	=	[0x5b,	0x00,	0x0a,	0x93,	0x8c]		# ELE0-ELE11 enabled SparkFun 1_5
-#Global0_2	=	[0x5b,	0x00,	0x0d,	0x93,	0x8c]		# ELE0-ELE11 enabled SparkFun 2_4
-#Global0_2	=	[0x5b,	0x00,	0x0a,	0x93,	0x84]		# ELE0-ELE3 enabled SparkFun 5_4
-#Global0_2	=	[0x5b,	0x00,	0x0a,	0x93,	0x8c]		# ELE0-ELE11 enabled SparkFun # 5_3_7
-#Global0_2	=	[0x5b,	0x00,	0x0a,	0x93,	0x87]		# ELE0-ELE6 enabled SparkFun # 7
-#Global0_2	=	[0x5b,	0x00,	0x0a,	0x93,	0x89]		# ELE0-ELE11 enabled SparkFun # 13
-#Global0_2	=	[0x5b,	0x00,	0x0a,	0x93,	0x8c]		# ELE0-ELE11 enabled SparkFun # 8_14
-#Global0_2	=	[0x5b,	0x00,	0x0a,	0x93,	0x8c]		# ELE0-ELE11 enabled SparkFun # 14_15
-#Global0_2	=	[0x5b,	0x00,	0x0a,	0x93,	0x8c]		# ELE0-ELE11 enabled SparkFun # 9_15
-#Global0_2	=	[0x5b,	0x00,	0x0a,	0x93,	0x8b]		# ELE0-ELE11 enabled SparkFun # 17
-
-Global1_2	=	[0x5b,	0x00,	0x07,	0x93,	0x89]		
+Global0_2	=	[0x5b,	0x00,	0x07,	0x93,	0x8c]		# ELE0-ELE11 enabled SparkFun
+Global1_2	=	[0x5b,	0x00,	0x07,	0x93,	0x89] 
 Global2_2	=	[0x5b,	0x00,	0x07,	0x93,	0x89] 
 Global3_2	=	[0x5b,	0x00,	0x07,	0x93,	0x89] 
 GlobalSn2	=	[Global0_2, Global1_2, Global2_2, Global3_2]

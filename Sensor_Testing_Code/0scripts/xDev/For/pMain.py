@@ -40,7 +40,7 @@
 #
 #************************************************************************************************************
 import time, os, sys
-import TouchCtrl, TouchObjs, soundFunctions
+import TouchCtrl, TouchObjs
 
 print "Kennel Model Running!"						# Feedback during development.
 TouchObjs.ConFigController()						# Configure the touch objects.
@@ -48,29 +48,47 @@ TouchObjs.ConFigController()						# Configure the touch objects.
 # The one, and only, never ending processing loop.
 #************************************************************************************************************
 try:												# Required durring development.
+	os.system('clear')
 	while 1==1:
 #************************************************************************************************************
 # Under construction! 
 # IR Sensor status check goes here in the next revision.
 # This section gets replaced by audio narrative processing in the next revision.
 #
-		# print "--------------OLD WAY--------------------"
-		# TouchStatus = TouchObjs.GetStatus()			# Call the get status function.
-		# for idx in range (0, 32):
-		# 	if TouchStatus[idx] > 0:
-		# 		print TouchStatus[idx]
-		# print "-------------NOW MY WONDERFUL NEW FUNCITON-----------------"
-		electroidList = TouchObjs.getTouchedElectrodes()
-		for idx in range (0, len(electroidList)):
-			print electroidList[idx]
-		
+		TouchStatus = TouchObjs.GetStatus()			# Call the get status function.
+		EleBit		=	1
+		siX = 0
+		siStatTmp = 0
+		iLst1=[]
+		for idx in range (0, 32):
+			if (idx) == 8:
+#			if TouchObjs.StatusOfTOs[idx] > 0:
+#			if TouchStatus[idx] > 0:
+				siStatTmp = TouchObjs.StatusOfTOs[idx]
+				for siX in range (0, 12):
+					if siStatTmp == None:
+						siStatTmp = 0
+					c = siStatTmp & EleBit
+					if (c) >0:
+						iLst1 += [1]
+					else:
+						iLst1 += [0]
+					EleBit <<=1
+#				print iLst1
+#				print 'SubNet = %d\t%3.0X' % (idx/4, TouchObjs.StatusOfTOs[idx])
+#				print TouchObjs.FiltValsOfTOs[idx]
+#				print TouchObjs.BaseLineValsOfTOs[idx]
+#				print 'SubNet = %d\t%3.0X' % (idx/4, TouchStatus[idx])
+#				print TouchStatus[idx]
+#				print TouchObjs.FiltValsOfTOs[idx]
+				myString = ''
+				for siX in range (0, 12):
+					myString +='%d,%d,%d,' % (TouchObjs.FiltValsOfTOs[idx][siX],  TouchObjs.BaseLineValsOfTOs[idx][siX], iLst1[siX])
 
-		if(len(electroidList) > 1):
-			os.system('mpg321 ./audio/MultipleTouch.mp3')
-		elif(len(electroidList) == 1):
-			soundFunctions.playSoundFromElectrode(electroidList[0])
+				print myString
+
 #************************************************************************************************************
-		time.sleep(0.5)
+		time.sleep(0.01)
 except KeyboardInterrupt:							# Required during development.
 	print ""
 	print "Kennel Model Stopped!"					# Feedback during development.
