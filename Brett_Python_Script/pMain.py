@@ -42,6 +42,15 @@
 import time, os, sys
 import TouchCtrl, TouchObjs, soundFunctions
 
+roomList = [None]
+
+def updateRoomList(electroidList):
+	global roomList
+	for idx in range(0, len(electroidList)):
+		new_list = [x for x in myList if x.age == 30] #check and see if we allready have the object.
+		if(len(new_list)==0) #k, add the object
+			roomList.append(electroidList[idx])
+
 print "Kennel Model Running!"						# Feedback during development.
 TouchObjs.ConFigController()						# Configure the touch objects.
 #************************************************************************************************************
