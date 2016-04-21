@@ -57,34 +57,37 @@ try:												# Required durring development.
 # This section gets replaced by audio narrative processing in the next revision.
 #
 	
-		# electroidList = TouchObjs.getTouchedElectrodes()
-		# for idx in range (0, len(electroidList)):
-		# 	print electroidList[idx]
+		#TouchObjs.GetStatus()
+
+		print "Now getting the electrode status"
+		electroidList = TouchObjs.getTouchedElectrodes()
+		for idx in range (0, len(electroidList)):
+			print electroidList[idx]
 		
 
-		# if(len(electroidList) > 1):
-		# 	os.system('mpg321 ./audio/MultipleTouch.mp3')
-		# elif(len(electroidList) == 1):
-		# 	soundFunctions.playSoundFromElectrode(electroidList[0])
+		if(len(electroidList) > 3):
+			os.system('mpg321 ./audio/MultipleTouch.mp3')
+		elif(len(electroidList) == 1):
+			soundFunctions.playSoundFromElectrode(electroidList[0])
 
 		#Now for some incredibly briliant software 
 
 		#
-		electroidList = TouchObjs.getTouchedElectrodes()
+		# electroidList = TouchObjs.getTouchedElectrodes()
 
-		room.updateRoomList(electroidList)
-		room.removeExpiredRooms() # get rid of all the old unplayed rooms
-		room.removeNonTouchedRooms(electroidList)
-		numUnplayedRooms = room.getNumberUnplayedRooms()
+		# room.updateRoomList(electroidList)
+		# room.removeExpiredRooms() # get rid of all the old unplayed rooms
+		# room.removeNonTouchedRooms(electroidList)
+		# numUnplayedRooms = room.getNumberUnplayedRooms()
 
-		if numUnplayedRooms == 1: #best case
-			#naiave way of doing this
-			room.playFirstUnplayedRoom()
+		# if numUnplayedRooms == 1: #best case
+		# 	#naiave way of doing this
+		# 	room.playFirstUnplayedRoom()
 		
 
 
 #************************************************************************************************************
-		time.sleep(0.5)
+		time.sleep(0.02)
 except KeyboardInterrupt:							# Required during development.
 	print ""
 	print "Kennel Model Stopped!"					# Feedback during development.

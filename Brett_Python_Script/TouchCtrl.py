@@ -27,6 +27,7 @@
 #  Revision      
 #  0	 Supporting script creation for touch sensing management.		Bret		2016-03-20
 #  1	 Corrected the SubNet MUX logic.								Bret		2016-03-22
+#  2	 Add performance data collection.								Bret		2016-03-28
 #                     
 #  x	 Edits.															TBD			2016-0x-xx
 #
@@ -42,6 +43,8 @@ class TouchObj:
 	SoftReset		=	[0x80,0x63]	 # MPR121 Soft Reset
 	def __init__(self):
 #		print TouchObj.__doc__
+		self.filtVal	=	[]										# Add filter input data.
+		self.baseLines	=	[]										# Add baseline data.
 		self.Instance = TouchObj.Instance									# Set instance.
 		self.ChipAddress	= TouchObj.CHIP_ADDR + TouchObj.Instance		# Set address
 		self.SubNetBit		= TouchObj.SubNetBit							# Mux channel
@@ -61,10 +64,12 @@ class TouchObj:
 #********************************************************************************************************************
 #* Comment the following line out if no MUX.
 #********************************************************************************************************************
+				print "SubNet, " + hex(self.SubNetBit) + " chip, " + hex(self.ChipAddress)
 				I2C.I2CWriteBytes(TouchObj.MUX_ADDR, [self.SubNetBit])		# Set Mux tosubnet.
 #********************************************************************************************************************
+				print "Wrote to Mux"
 				I2C.I2CWriteBytes(self.ChipAddress, TouchObj.SoftReset)	# Reset MPR121
-				time.sleep(0.01)											# Short delay.
+				time.sleep(0.05)											# Short delay.
 #				print Thresholds.ThresholdAll[self.SubNet][self.Instance]	# Confirmed!
 																			# Thresholds to MPR121
 				I2C.I2CWriteBytes(self.ChipAddress, Thresholds.ThresholdAll[self.SubNet][self.Instance])
@@ -78,12 +83,25 @@ class TouchObj:
 				I2C.I2CWriteBytes(self.ChipAddress, Globals.GlobalAll[self.SubNet][self.Instance])
 
 	def displayStatus(self):
+		filtVal	= [0]
 		if NetsAddrs.SubNetsEn[self.SubNet] == 1:							# SubNet must be Enabled.
 			if NetsAddrs.EnabledAll[self.SubNet][self.Instance] == 1:		# Address must be Enabled.
 #********************************************************************************************************************
 #* Comment the following line out if no MUX.
+				print "SubNet, " + hex(self.SubNetBit) + " chip, " + hex(self.ChipAddress)
 				I2C.I2CWriteBytes(TouchObj.MUX_ADDR, [self.SubNetBit])		# Confirmed correct!
 #********************************************************************************************************************
-				self.TouchStatus = I2C.I2CReadStatus(self.ChipAddress)		# Read touch status
+				print "Wrote to Mux"
+				time.sleep(0.05)
+				self.TouchStatus = I2C.I2CReadStatus(self.ChipAddress)			# Read touch status
+#				self.filtVal = I2C.I2CRead2Byte(self.ChipAddress, 12, 0x04)		# Filtered input data.
+#				self.baseLines = I2C.I2CRead1Byte(self.ChipAddress, 12, 0x1e)	# Baseline data.
+#				for idx in range (0, 12):
+#					self.baseLines[idx] <<=2
+#				print self.filtVal
+				time.sleep(0.02)
 				return self.TouchStatus
 # End TouchCtrl.py
+
+
+#GfiltVal			=  TouchObj.filtVal

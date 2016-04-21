@@ -7,6 +7,7 @@ room.printRoomList()
 room.removeExpiredRooms() # get rid of all the old unplayed rooms
 room.printRoomList()
 room.removeNonTouchedRooms(electroidList)
+
 room.printRoomList()
 numUnplayedRooms = room.getNumberUnplayedRooms()
 

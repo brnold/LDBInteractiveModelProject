@@ -29,18 +29,19 @@
 #************************************************************************************************************
 
 # Sub-networks enables.
-#				 0	1	2	3	4	5	6	7
-SubNetsEn	=	[0,	0,	1,	0,	0,	1,	0,	0]		# Only sub-network 5 is enabled.
+#			 0	1	2	3	4	5	6	7
+#SubNetsEn	=	[1,	0,	0,	0,	0,	0,	0,	0]		# Only sub-network 5 is enabled.
+SubNetsEn	=	[0,	0,	0,	0,	1,	1,	0,	0 ]		# Only sub-network 5 is enabled.
 # Sub-network address enables.
 #				 0	1	2	3
-EnabledIn0	=	[0,	0,	0,	0] 
-EnabledIn1	=	[0,	0,	0,	0]
-EnabledIn2	=	[1,	0,	0,	0] 
-EnabledIn3	=	[0,	0,	0,	0]
-EnabledIn4	=	[0,	0,	0,	0] 
-EnabledIn5	=	[1,	0,	0,	0]						# Only address 0 is active.
+EnabledIn0	=	[1,	1,	1,	1] 
+EnabledIn1	=	[1,	1,	1,	1]
+EnabledIn2	=	[1,	1,	1,	1]						# Add SparkFun Breakout. 3-27 BH
+EnabledIn3	=	[1,	1,	1,	1]
+EnabledIn4	=	[0,	0,	0,	0]  # 1 is the top left secion, back side
+EnabledIn5	=	[1,	0,	0,	1]  #  Back section				# Only address 0 is active.
 EnabledIn6	=	[0,	0,	0,	0] 
-EnabledIn7	=	[0,	0,	0,	0]
+EnabledIn7	=	[0,	0,	0,	1]
  
 EnabledAll	=	[EnabledIn0, EnabledIn1, EnabledIn2, EnabledIn3, EnabledIn4, EnabledIn5, EnabledIn6, EnabledIn7]
 
