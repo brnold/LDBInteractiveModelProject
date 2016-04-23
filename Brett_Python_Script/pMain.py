@@ -59,7 +59,7 @@ try:												# Required durring development.
 	
 		#TouchObjs.GetStatus()
 
-		print "Now getting the electrode status"
+		#print "Now getting the electrode status"
 		electroidList = TouchObjs.getTouchedElectrodes()
 		for idx in range (0, len(electroidList)):
 			print electroidList[idx]
@@ -67,7 +67,7 @@ try:												# Required durring development.
 
 		if(len(electroidList) > 3):
 			os.system('mpg321 ./audio/MultipleTouch.mp3')
-		elif(len(electroidList) == 1):
+		elif((len(electroidList) <= 3) and (len(electroidList)>0) ):
 			soundFunctions.playSoundFromElectrode(electroidList[0])
 
 		#Now for some incredibly briliant software 
@@ -87,7 +87,7 @@ try:												# Required durring development.
 
 
 #************************************************************************************************************
-		time.sleep(0.02)
+		time.sleep(0.2)
 except KeyboardInterrupt:							# Required during development.
 	print ""
 	print "Kennel Model Stopped!"					# Feedback during development.

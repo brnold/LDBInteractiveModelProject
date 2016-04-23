@@ -27,14 +27,25 @@
 #************************************************************************************************************
 import serbus, time, os	
 def I2CWriteBytes(CHIP_ADDR, data):
-		bus.write(CHIP_ADDR, data)								# Write the list 'data' two the chip.
-
+		try:
+			bus.write(CHIP_ADDR, data)			# Write the list 'data' two the chip.
+		except IOError:
+			print "Its the IO Error, in the write command"
 def I2CReadStatus(CHIP_ADDR):
 #		print "Reading"											# Feedback during development.
-		touchStatus = bus.readTransaction(CHIP_ADDR, 0, 2)		# Reading two 8 bit status registers.
-#		print touchStatus										# Feedback during development.
-		newStatus = touchStatus[0]+ 256*touchStatus[1]			# Combine to one number.
+		try:
+			touchStatus = bus.readTransaction(CHIP_ADDR, 0, 2)		# Reading two 8 bit status registers.
+			newStatus = touchStatus[0]+ 256*touchStatus[1]			# Combine to one number.
+
+		except:
+			print "It's the IO error, in the read command"
+			newStatus = 0 
 		return newStatus
+#			
+	#	 print touchStatus										# Feedback during development.
+		
+
+
 
 # Executes on import.
 try:															# Required during development.

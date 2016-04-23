@@ -67,7 +67,7 @@ class TouchObj:
 				print "SubNet, " + hex(self.SubNetBit) + " chip, " + hex(self.ChipAddress)
 				I2C.I2CWriteBytes(TouchObj.MUX_ADDR, [self.SubNetBit])		# Set Mux tosubnet.
 #********************************************************************************************************************
-				print "Wrote to Mux"
+				#print "Wrote to Mux"
 				I2C.I2CWriteBytes(self.ChipAddress, TouchObj.SoftReset)	# Reset MPR121
 				time.sleep(0.05)											# Short delay.
 #				print Thresholds.ThresholdAll[self.SubNet][self.Instance]	# Confirmed!
@@ -88,18 +88,18 @@ class TouchObj:
 			if NetsAddrs.EnabledAll[self.SubNet][self.Instance] == 1:		# Address must be Enabled.
 #********************************************************************************************************************
 #* Comment the following line out if no MUX.
-				print "SubNet, " + hex(self.SubNetBit) + " chip, " + hex(self.ChipAddress)
+				#print "SubNet, " + hex(self.SubNetBit) + " chip, " + hex(self.ChipAddress)
 				I2C.I2CWriteBytes(TouchObj.MUX_ADDR, [self.SubNetBit])		# Confirmed correct!
 #********************************************************************************************************************
-				print "Wrote to Mux"
-				time.sleep(0.05)
+				#print "Wrote to Mux"
+				#time.sleep(0.05)
 				self.TouchStatus = I2C.I2CReadStatus(self.ChipAddress)			# Read touch status
 #				self.filtVal = I2C.I2CRead2Byte(self.ChipAddress, 12, 0x04)		# Filtered input data.
 #				self.baseLines = I2C.I2CRead1Byte(self.ChipAddress, 12, 0x1e)	# Baseline data.
 #				for idx in range (0, 12):
 #					self.baseLines[idx] <<=2
 #				print self.filtVal
-				time.sleep(0.02)
+				#time.sleep(0.02)
 				return self.TouchStatus
 # End TouchCtrl.py
 

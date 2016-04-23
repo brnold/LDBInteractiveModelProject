@@ -6,8 +6,8 @@
 
 import csv
 
-electrodes = "electrodes_back = ["
-scripts = "scripts_back = ["
+electrodes = "electrodes_name = ["
+scripts = "scripts_name = ["
 
 with open('backside.csv', 'rb') as csvfile:
 	fieldnames = ['electrode', 'response']
