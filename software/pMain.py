@@ -69,18 +69,18 @@ try:												# Required durring development.
 		for idx in range (0, len(electroidList)):
 			print electroidList[idx]
 		
-		if(len(electroidList)>0):
-			#see time since last touch,
-			# if time is grater thatn 5 or so muniues, play the welcome
-			if((time.time()- tSinceLastTouch) > 60*5):
-				os.system('mpg321  ~/Brett_Python_Script/audio/INTRO.mp3')
-				tSinceLastTouch = time.time()
-			elif(len(electroidList) > 3):
-				os.system('mpg321  ~/Brett_Python_Script/audio/MultipleTouch.mp3')
-				tSinceLastTouch = time.time()
-			elif((len(electroidList) <= 3) ):
-				soundFunctions.playSoundFromElectrode(electroidList[0])
-				tSinceLastTouch = time.time()
+		# if(len(electroidList)>0):
+		# 	#see time since last touch,
+		# 	# if time is grater thatn 5 or so muniues, play the welcome
+		# 	if((time.time()- tSinceLastTouch) > 60*5):
+		# 		os.system('mpg321  ~/Brett_Python_Script/audio/INTRO.mp3')
+		# 		tSinceLastTouch = time.time()
+		# 	elif(len(electroidList) > 3):
+		# 		os.system('mpg321  ~/Brett_Python_Script/audio/MultipleTouch.mp3')
+		# 		tSinceLastTouch = time.time()
+		# 	elif((len(electroidList) <= 3) ):
+		# 		soundFunctions.playSoundFromElectrode(electroidList[0])
+		# 		tSinceLastTouch = time.time()
 
 		#Now for some incredibly briliant software 
 
