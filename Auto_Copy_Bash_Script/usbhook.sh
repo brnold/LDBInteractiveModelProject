@@ -11,31 +11,38 @@
 
 # CONFIGURATION
 DEBUG=0 # set to 1 for debugging output
-DEST="~/foo/" # destination for files
+DEST="/root/software/audio" # destination for files
 
+echo "Script has begun to work!" >> ~/Auto_Copy_Bash_Script/myfile.txt
 
 DEVICE="$1" # the device name
 LOGFACILITY="kernel.info" # for debugging output
 
+echo "1st parameter, then 2nd parameter" >> ~/Auto_Copy_Bash_Script/myfile.txt
+echo $1 >> ~/Auto_Copy_Bash_Script/myfile.txt
+echo $2 >> ~/Auto_Copy_Bash_Script/myfile.txt
 
-if [ ${DEBUG:=0} == 1 ]; then logger "$LOGFACILITY" usbhook called with arguments: "$DEVICE"; fi
+if [ ${DEBUG:=0} == 1 ]; then echo "$LOGFACILITY" usbhook called with arguments: "$DEVICE"; fi
+
 
 sleep 5 # delay 5 seconds to wait for mount
 
-mount | grep "$DEVICE"
+mount  /dev/"$DEVICE" /media/usb
 FOO="$?"
+
+echo $FOO >> ~/Auto_Copy_Bash_Script/myfile.txt
 
 if [ $FOO == 0 ];
 then
+    mpg321 ~/Auto_Copy_Bash_Script/usbDectected.mp3
     if [ ${DEBUG:=0} == 1 ]; then 
-    	logger "$LOGFACILITY" usbhook device mounted: "$DEVICE"; 
-    	mpg321 ~/Auto_Copy_Bash_Script/usbDectected.mp3 &
+    	logger "$LOGFACILITY" usbhook device mounted: "$DEVICE";   	
     fi
 else
+    mpg321 ~/Auto_Copy_Bash_Script/usbFailed.mp3
     if [ ${DEBUG:=0} == 1 ]; then 
-    	logger "$LOGFACILITY" usbhook device NOT mounted: "$DEVICE" - exiting;
-    	mpg321 ~/Auto_Copy_Bash_Script/usbFailed.mp3 &
-    	fi
+    	logger "$LOGFACILITY" usbhook device NOT mounted: "$DEVICE" - exiting;	
+    fi
     exit 0
 fi
 
@@ -49,6 +56,8 @@ BAR=`mount | grep "$DEVICE" | awk '{ print $3 }'`
 #     exit 0
 # fi
 
-cp -R "$DEVICE"/* "$DEST"
+cp -R "$DEST" /media/usb/OLD_SCRIPTS/
+cp /media/usb/NEW_SCRIPTS_GO_HERE/*.mp3 "$DEST"
+umount /media/usb/
 mpg321 ~/Auto_Copy_Bash_Script/usbDone.mp3
 

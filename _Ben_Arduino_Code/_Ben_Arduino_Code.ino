@@ -141,7 +141,9 @@ void loop() {
   // put your main code here, to run repeatedly:
   UINT uiTouchStatus;
   tcaselect(0);
-  I2CreadBytes(&uiTouchStatus, 1, 0);                // Electrode touch status.
+  Wire.begin();
+  Wire.write()(&uiTouchStatus, 1, 0);                // Electrode touch status.
+  Wire.end();
   Serial.print(uiTouchStatus);
   
   delay(100);

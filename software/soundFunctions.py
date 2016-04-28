@@ -52,7 +52,7 @@ def getSoundName( electrodeName):
 		return "null"
 
 def playSound(soundName):
-	os.system('mpg321 ./audio/'+soundName+'.mp3')
+	os.system('mpg321  ~/Brett_Python_Script/audio/'+soundName+'.mp3')
 
 def playSoundFromElectrode(electrodeName):
 	playSound(getSoundName(electrodeName))

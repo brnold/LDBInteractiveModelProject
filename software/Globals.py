@@ -30,8 +30,8 @@
 # Global configuration settings
 # Address_Subnet
 #				 SA		DBT_R	F_CDC	CDT_F	ECR
-Global0_0	=	[0x5b,	0x00,	0x0a,	0x93,	0x8c]		# ELE0-ELE8 enabled SparkFun # 13
-Global1_0	=	[0x5b,	0x00,	0x0a,	0x93,	0x8c]		# ELE0-ELE11 enabled SparkFun # 5_3_7
+Global0_0	=	[0x5b,	0x00,	0x0a,	0x93,	0x8c]		# ELE0-ELE11 enabled SparkFun # 5_3_7
+Global1_0	=	[0x5b,	0x00,	0x0a,	0x93,	0x89]		# ELE0-ELE8 enabled SparkFun # 13 # was a c
 Global2_0	=	[0x5b,	0x00,	0x0a,	0x93,	0x84]		# ELE0-ELE3 enabled SparkFun 5_4
 Global3_0	=	[0x5b,	0x00,	0x0d,	0x93,	0x8c]		# ELE0-ELE11 enabled SparkFun 2_4
 GlobalSn0	=	[Global0_0, Global1_0, Global2_0, Global3_0]
