@@ -41,7 +41,7 @@
 #************************************************************************************************************
 import time, os, sys
 from bbio import *
-import TouchCtrl, TouchObjs, soundFunctions
+import TouchCtrl, TouchObjs, soundFunctions, I2C
 
 tSinceLastTouch = -5 # set the time to somthing so it will play the first touch immedetly
 
@@ -69,18 +69,29 @@ try:												# Required durring development.
 		for idx in range (0, len(electroidList)):
 			print electroidList[idx]
 		
-		# if(len(electroidList)>0):
-		# 	#see time since last touch,
-		# 	# if time is grater thatn 5 or so muniues, play the welcome
-		# 	if((time.time()- tSinceLastTouch) > 60*5):
-		# 		os.system('mpg321  ~/Brett_Python_Script/audio/INTRO.mp3')
-		# 		tSinceLastTouch = time.time()
-		# 	elif(len(electroidList) > 3):
-		# 		os.system('mpg321  ~/Brett_Python_Script/audio/MultipleTouch.mp3')
-		# 		tSinceLastTouch = time.time()
-		# 	elif((len(electroidList) <= 3) ):
-		# 		soundFunctions.playSoundFromElectrode(electroidList[0])
-		# 		tSinceLastTouch = time.time()
+		#first, check and see if the I2C error counter is larger than some value
+
+		if(I2C.error_counter > 0):
+			if(I2C.error_counter > 2):
+				raise SystemExit
+			else:
+				I2C.error_counter = I2C.error_counter - 1
+				
+		if(len(electroidList)>0):
+
+			#see time since last touch,
+			# if time is grater thatn 5 or so muniues, play the welcome
+
+
+			if((time.time()- tSinceLastTouch) > 60*5):
+				os.system('mpg321  ~/software/audio/INTRO.mp3')
+				tSinceLastTouch = time.time()
+			elif(len(electroidList) > 3):
+				os.system('mpg321  ~/software/audio/MultipleTouch.mp3')
+				tSinceLastTouch = time.time()
+			elif((len(electroidList) <= 3) ):
+				soundFunctions.playSoundFromElectrode(electroidList[0])
+				tSinceLastTouch = time.time()
 
 		#Now for some incredibly briliant software 
 
@@ -104,6 +115,11 @@ except KeyboardInterrupt:							# Required during development.
 	print ""
 	print "Kennel Model Stopped!"					# Feedback during development.
 	digitalWrite( GPIO1_28, HIGH) #turn off the sensors
+
+except SystemExit:
+	print "SystemExit exception Raised"
+	print "This happened becuase there was an IIC error"
+	digitalWrite(GPIO1_28, HIGH)
 
 # End of pMain.py
 
