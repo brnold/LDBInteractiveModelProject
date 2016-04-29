@@ -41,11 +41,11 @@
 #
 #************************************************************************************************************
 import time, os, sys
-#from bbio import *
+from bbio import *
 import TouchCtrl, TouchObjs, NetsAddrs
 
-#pinMode( GPIO1_28, OUTPUT)
-#digitalWrite( GPIO1_28, LOW)
+pinMode( GPIO1_28, OUTPUT)
+digitalWrite( GPIO1_28, LOW)
 time.sleep(0.2)
 print "Kennel Model Running!"						# Feedback during development.
 TouchObjs.ConFigController()						# Configure the touch objects.

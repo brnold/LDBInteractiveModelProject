@@ -36,24 +36,24 @@ LocalCC3_0	=	[0x5F,	0,	0,	0, 14,	0,	11,	0,	10,	0,	0,	10,	10]		# 2_4
 LocalCCSn0	=	[LocalCC0_0, LocalCC1_0, LocalCC2_0, LocalCC3_0]
 
 LocalCC0_1	=	[0x5F,	19,	19,	8,	9,	8,	8,	0,	9,	12,	0,	9,	0]		# Floor panel 9_15
-LocalCC1_1	=	[0x5F,	12,	0,	12,	0,	11,	0,	12,	8,	0,	26,	22,	21]		# Floor panel 14_15
-LocalCC2_1	=	[0x5F,	9,	11,	9,	0,	9,	0,	9,	0,	0,	0,	0,	0]		# Floor panel 7
-LocalCC3_1	=	[0x5F,	0,	0,	0,	11,	0,	0,	12,	11,	0,	12,	9,	8]		# Floor panel 8_14
+LocalCC1_1	=	[0x5F,	14,	12,	13,	13,	15,	11,	13,	10,	12,	15,	15,	15]		# Floor panel 14_15
+LocalCC2_1	=	[0x5F,	9,	10,	9,	9,	9,	9,	9,	0,	0,	0,	0,	0]		# Floor panel 7
+LocalCC3_1	=	[0x5F,	11,	11,	11,	11,	11,	11,	12,	11,	11,	12,	9,	8]		# Floor panel 8_14
 LocalCCSn1	=	[LocalCC0_1, LocalCC1_1, LocalCC2_1, LocalCC3_1]
 
 LocalCC0_2	=	[0x5F,	11,	10, 	11,	11,	0,	11,	0,	11,	14,	14,	14,	14]		# Floor panel 1_5 
 LocalCC1_2	=	[0x5F,	9,	11,	9,	11,	0,	0,	11,	0,	11,	0,	0,	0]		# Floor panel 6_3
-LocalCC2_2	=	[0x5F,	14,	0,	9,	0,	0,	8,	8,	8,	0,	9,	0,	0]		# Floor panel 17
-LocalCC3_2	=	[0x5F,	8,	0,	8,	0,	0,	9,	8,	9,	8,	9,	9,	0]		# Floor panel 3_16
+LocalCC2_2	=	[0x5F,	8,	5,	8,	0,	0,	10,	11,	10,	0,	9,	8,	8]		# Floor panel 17
+LocalCC3_2	=	[0x5F,	10,	0,	11,	13,	13,	12,	11,	11,	12,	9,	10,	12]		# Floor panel 3_16
 LocalCCSn2	=	[LocalCC0_2, LocalCC1_2, LocalCC2_2, LocalCC3_2]
 
-LocalCC0_3	=	[0x5F,	16,	18,	14,	16,	0,	11,	0,	0,	0,	0,	0,	0]		# Floor panel 18_19
+LocalCC0_3	=	[0x5F,	13,	13,	11,	11,	0,	11,	0,	0,	0,	0,	0,	0]		# Floor panel 18_19
 LocalCC1_3	=	[0x5F,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0] 
 LocalCC2_3	=	[0x5F,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0] 
 LocalCC3_3	=	[0x5F,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0] 
 LocalCCSn3	=	[LocalCC0_3, LocalCC1_3, LocalCC2_3, LocalCC3_3]
 
-LocalCC0_4	=	[0x5F,	9,	8,	9,	0,	11,	9,	1,	1,	1,	1,	1,	1]		#6-1
+LocalCC0_4	=	[0x5F,	9,	8,	9,	0,	11,	9,	18,	18,	17,	18,	18,	0]		#6-1
 LocalCC1_4	=	[0x5F,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0] 
 LocalCC2_4	=	[0x5F,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0] 
 LocalCC3_4	=	[0x5F,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0] 

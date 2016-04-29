@@ -32,15 +32,15 @@
 #************************************************************************************************************
 
 # Sub-networks enables.
-#				 0	1	2	3	4	5	6	7
-SubNetsEn	=	[0,	0,	1,	0,	0,	0,	0,	0]		# Only one sub-network is enabled.
+#			 0	1	2	3	4	5	6	7
+SubNetsEn	=	[0,	1,	0,	0,	0,	0,	0,	0]		# Only one sub-network is enabled.
 #SubNetsEn	=	[1,	1,	1,	1,	1,	1,	0,	0]		# All sub-networks enabled.
 # Sub-network address enables.
 #				 0	1	2	3
-EnabledIn0	=	[1,	1,	1,	1] 						# All Address space enabled
-EnabledIn1	=	[1,	1,	1,	1]						# All Address space enabled
+EnabledIn0	=	[0,	0,	0,	0] 						# All Address space enabled
+EnabledIn1	=	[0,	0,	0,	1]						# All Address space enabled
 #EnabledIn2	=	[0,	0,	0,	1]						# All Address space enabled
-EnabledIn2	=	[1,	0,	0,	0]						# Only first address enabled
+EnabledIn2	=	[0,	0,	0,	1]						# Only first address enabled
 EnabledIn3	=	[1,	0,	0,	0]
 EnabledIn4	=	[1,	0,	0,	0] 						# Only first address enabled
 EnabledIn5	=	[1,	1,	1,	1]						# All Address space enabled
