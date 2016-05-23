@@ -43,6 +43,31 @@ import time, os, sys
 from bbio import *
 import TouchCtrl, TouchObjs, soundFunctions, I2C
 
+stuckCount = 0 
+previousList = {0}
+
+def checkForStuckElectrode(listElectrodes):
+	global stuckCount, previousList
+
+	theSet = set(listElectrodes).intersection(previousList)
+
+	if(len(theSet)>0):
+		stuckCount = stuckCount + 1
+	else:
+		stuckCount = 0
+
+	previousList = listElectrodes
+
+	if(stuckCount > 20):
+		return True
+	else:
+		return False
+
+	
+
+
+
+
 tSinceLastTouch = -5 # set the time to somthing so it will play the first touch immedetly
 
 #setup the switch
@@ -77,6 +102,9 @@ try:												# Required durring development.
 			else:
 				I2C.error_counter = I2C.error_counter - 1
 				
+		if(checkForStuckElectrode(electroidList)):
+			raise SystemExit		
+
 		if(len(electroidList)>0):
 
 			#see time since last touch,
@@ -122,4 +150,8 @@ except SystemExit:
 	digitalWrite(GPIO1_28, HIGH)
 
 # End of pMain.py
+
+
+
+
 

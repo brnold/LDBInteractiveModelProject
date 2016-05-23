@@ -35,7 +35,7 @@ SubNetsEn	=	[1,	1,	1,	1,	1,	1,	0,	0 ]		# Only sub-network 5 is enabled.
 # Sub-network address enables.
 #			 0	1	2	3
 EnabledIn0	=	[1,	1,	1,	1] 
-EnabledIn1	=	[1,	1,	1,	1]
+EnabledIn1	=	[1,	1,	1,	0]
 EnabledIn2	=	[1,	1,	1,	1]						# Add SparkFun Breakout. 3-27 BH
 EnabledIn3	=	[1,	0,	0,	0]
 EnabledIn4	=	[1,	0,	0,	0]  # 1 is the top left secion, back side
