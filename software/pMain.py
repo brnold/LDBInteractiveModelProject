@@ -58,7 +58,7 @@ def checkForStuckElectrode(listElectrodes):
 
 	previousList = listElectrodes
 
-	if(stuckCount > 20):
+	if(stuckCount > 5):
 		return True
 	else:
 		return False
@@ -91,8 +91,8 @@ try:												# Required durring development.
 
 		#print "Now getting the electrode status"
 		electroidList = TouchObjs.getTouchedElectrodes()
-		for idx in range (0, len(electroidList)):
-			print electroidList[idx]
+		# for idx in range (0, len(electroidList)):
+		# 	print electroidList[idx]
 		
 		#first, check and see if the I2C error counter is larger than some value
 
@@ -111,7 +111,11 @@ try:												# Required durring development.
 			# if time is grater thatn 5 or so muniues, play the welcome
 
 
+
 			if((time.time()- tSinceLastTouch) > 60*5):
+				#degubbing, need to remove (really)
+				with open("log_electrodes.txt", "a") as myfile:
+   					myfile.write("----------------Intro Triggered------------------\n")
 				os.system('mpg321  ~/software/audio/INTRO.mp3')
 				tSinceLastTouch = time.time()
 			elif(len(electroidList) > 3):
@@ -121,6 +125,11 @@ try:												# Required durring development.
 				soundFunctions.playSoundFromElectrode(electroidList[0])
 				tSinceLastTouch = time.time()
 
+			with open("log_electrodes.txt", "a") as myfile:
+				for idx in range (0, len(electroidList)):
+					myfile.write(electroidList[idx])
+					myfile.write(",")
+				myfile.write("*************************\n")
 		#Now for some incredibly briliant software 
 
 		#
