@@ -8,19 +8,20 @@ We are group 6!
 
 ###Code Contributors
 Bret Henson - Main Architect, MRP-121 interfacing.
+
 Benjamin Nold - Linux Guru, Auto Copy Bash Script, Support, Feedback scripts.
 
 
 ####Team Members
-Benajamin Nold - CE - Group Leader
-Rana Elias - ME - Mechanical Engineer Leader
-Amith Diwaka - ME
-Katy Wagner - ME
-Taylor Loehr - ME
-Ryan Christenson - EE
-Bret Henson - EE
-Katrina Fleishans - EE
-Biplob Dutta - ME
+* Benajamin Nold - CE - Group Leader
+* Rana Elias - ME - Mechanical Engineer Leader
+* Amith Diwaka - ME
+* Katy Wagner - ME
+* Taylor Loehr - ME
+* Ryan Christenson - EE
+* Bret Henson - EE
+* Katrina Fleishans - EE
+* Biplob Dutta - ME
 
 ##What's where?
 
